@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="NeuroVerse.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="mainStyles.css" rel="stylesheet" />
+</head>
+<style>
+    
+    #grid{
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 0px;
+        grid-template-rows: 100px 1fr 50px;
+        grid-template-areas: 
+            "logo . . . discover create you . . . . user"
+            "body body body body body body body body body body body body";
+            "fotter fotter fotter fotter fotter fotter fotter fotter fotter fotter fotter fotter";
+        align-items: center;
+    }
+    #content{
+        grid-area: body;
+    }
+    #Glowing {
+        border-radius: 50%;
+        position: absolute;
+        z-index: 100;
+        width: 100px;
+        height: 100px;
+        background-image: radial-gradient(rgba(255, 0, 0, 0.3),rgba(255, 0, 0, 0),rgba(255, 0, 0, 0))
+    }
+    *:not(img) {
+        filter: invert(<%=Session["light"]%>);
+    }
+</style>
+
+
+<body>
+    
+    <form id="form1" runat="server">
+        <div id="grid">
+            <img src="Imgs/LOGO.svg" style="grid-area: logo; max-height:100px; margin : 10px" />
+            <a href="Discover.aspx" class="button" style="grid-area: discover;">Discover</a>
+            <a href="Create.aspx" class="button" style="grid-area: create;" <%=hide %>>Create</a>
+            <a href="You.aspx" class="button" style="grid-area: you;" <%=hide %>>You</a>
+            <a href="<%=loginUrl %>" class="button" style="grid-area: user;"><%=login %></a>
+            
+            <div style="grid-area: body; text-align:center">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+    
+            
+        </div>
+        <div id="fotter" style="grid-area: fotter; text-align:center">
+            <a href="aboutUs.aspx">About</a>
+            <p>this is a website with the goal of making every1 smarter using basic problem solving skills</p>
+            <a href="adminlogin.aspx">Adminlogin</a>
+        </div>
+    </form>
+</body>
+</html>
