@@ -58,8 +58,10 @@
         </div>
         <div id="fotter" style="grid-area: fotter; text-align:center">
             <a href="aboutUs.aspx">About</a>
-            <p>this is a website with the goal of making every1 smarter using basic problem solving skills</p>
+            <p>this is a website with the goal of making everyone smarter using basic problem solving skills</p>
             <a href="adminlogin.aspx">Adminlogin</a>
+            <p>we are currently running a fight light mode vs dark mode click here to open the fight tab</p>
+            <a href="poll.aspx">fight</a>
         </div>
     </form>
 </body>
