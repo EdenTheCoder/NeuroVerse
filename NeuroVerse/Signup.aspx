@@ -14,6 +14,14 @@
             }
 
         }
+        function updatePreview() {
+            var value = document.getElementById("pfp").value;
+            var img = document.getElementById("img");
+            img.src = "Imgs/pfp/" + value + ".jpg";
+            img.alt = value;
+        }
+        setTimeout(updatePreview,100)
+
 
     </script>
 
@@ -57,6 +65,17 @@
 
         <label for="Hard">Hard</label>
         <input type="radio" name="difficulty" id="Hard" value="Hard" />
+
+        <label for="pfp">Profile Picture</label>
+        <select id="pfp",name = "pfp" onchange = "updatePreview()">
+            <option value="dog">dog</option>
+            <option value="cat">cat</option>
+            <option value="fish">fish</option>
+            <option value="bird">bird</option>
+            <option value="lizard">lizard</option>
+        </select>
+        <label for="pfp">Profile Picture</label>
+        <img id="img" src="" alt="Alternate Text" style="height: 100px"/>
     </div>
     <button type="submit" name="submit" id="submit" onclick="validatePassword(event)">Sign Up</button>
     <h3><%=message %></h3>

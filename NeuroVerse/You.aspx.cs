@@ -16,7 +16,14 @@ namespace NeuroVerse
         public string lastName = "";
         public string phone = "";
         public string password = "";
-        
+
+
+        public string dog = "";
+        public string cat = "";
+        public string fish = "";
+        public string bird = "";
+        public string lizard = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -35,6 +42,15 @@ namespace NeuroVerse
             lastName = thisguy.Rows[0]["Lastname"].ToString();
             phone = thisguy.Rows[0]["Phone"].ToString();
             password = thisguy.Rows[0]["Password"].ToString();
+            string pfp = thisguy.Rows[0]["profilePic"].ToString();
+
+            if (pfp == "dog") dog = "selected";
+            if (pfp == "cat") cat = "selected";
+            if (pfp == "fish") fish = "selected";
+            if (pfp == "bird") bird = "selected";
+            if (pfp == "lizard") lizard = "selected";
+
+
             Response.Write("a");
             if (Request.Form["submit"] != null)
             {

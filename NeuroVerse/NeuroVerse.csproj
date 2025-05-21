@@ -136,6 +136,9 @@
     <Content Include="Imgs\meeting but no1 came.jpg" />
     <Content Include="Imgs\meeting.jpg" />
     <Content Include="Imgs\LOGO.svg" />
+    <Content Include="Imgs\pfp\cat.jpg" />
+    <Content Include="Imgs\pfp\dog.jpg" />
+    <Content Include="Imgs\pfp\fish.jpg" />
     <Content Include="Poll.aspx" />
     <Content Include="removeuser.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />

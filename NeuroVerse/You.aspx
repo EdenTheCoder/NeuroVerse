@@ -2,6 +2,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
+    <script>
+        function updatePreview() {
+            var value = document.getElementById("pfp").value;
+            var img = document.getElementById("img");
+            img.src = "Imgs/pfp/" + value + ".jpg";
+            img.alt = value;
+        }
+        setTimeout(updatePreview, 100)
+    </script>
+
 
     <h1>Change data</h1>
 
@@ -44,6 +55,16 @@
     <input type="radio" name="difficulty" id="Hard" value="Hard" />
 
 
+    <label for="pfp">Profile Picture</label>
+    <select id="pfp",name = "pfp" onchange = "updatePreview()" value = "cat">
+        <option value="dog" <%=dog %> >dog</option>
+        <option value="cat" <%=cat %> >cat</option>
+        <option value="fish" <%=fish %>>fish</option>
+        <option value="bird" <%=bird %>>bird</option>
+        <option value="lizard" <%=lizard %>>lizard</option>
+    </select>
+    <label for="pfp">Profile Picture</label>
+    <img id="img" src="" alt="Alternate Text" style="height: 100px"/>
 
 </div>
     <button type="submit" name="submit">Submit</button>
