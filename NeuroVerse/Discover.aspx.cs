@@ -18,6 +18,8 @@ namespace NeuroVerse
         public string p = "";
         public string d = "";
         public string s = "";
+        public string creator = "";
+        public string Pfp = "Img";
         protected void Page_Load(object sender, EventArgs e)
         {
             int current = 1;

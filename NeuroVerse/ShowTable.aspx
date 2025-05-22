@@ -48,7 +48,7 @@
             <td>Solved</td>
             <td>Light Mode</td>
             <td>difficulty</td>
-
+            <td>Pfp</td>
             <td>Delete user</td>
 
 

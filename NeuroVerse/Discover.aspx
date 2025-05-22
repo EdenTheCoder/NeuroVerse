@@ -37,6 +37,8 @@
     </style>
 
     <div id="con">
+        <p>Made By <%=creator %></p>
+        <asp:Image ImageUrl="Imgs/pfp/<%=pfp %>.jpg" runat="server" />
         <p><%=p %></p>
         <p>Difficulty : <%=d %></p>
         <button onclick="showSolution()" type="button">Show Solution</button>
