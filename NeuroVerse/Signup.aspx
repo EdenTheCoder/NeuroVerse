@@ -9,7 +9,7 @@
             let password = document.getElementById("password").value;
             let confirmPassword = document.getElementById("confirmPassword").value;
             let passwordC = document.getElementById("passwordC");
-            if (password != confirmPassword || password.length<3) {
+            if (password != confirmPassword || password.length < 3) {
                 passwordC.innerHTML = "Passwords do not match or arnt long enf";
                 event.preventDefault();
                 return;
@@ -17,13 +17,73 @@
                 passwordC.innerHTML = "";
             }
 
+            let email = document.getElementById("email").value;
+            let emailC = document.getElementById("emailC")
+            let emailRegex = /^[\w]{2,}@[\w]{2,}\.[\w]{2,}$/;
+            if (!(email.match(emailRegex))) {
+                emailC.innerHTML = "Invalid email";
+                event.preventDefault();
+                return;
+            } else {
+                emailC.innerHTML = "";
+            }
+
+            let phone = document.getElementById("phone").value;
+            let phoneC = document.getElementById("phoneC")
+            let phoneRegex = /^[\d]{10}$/;
+            if (!phone.match(phoneRegex)) {
+                phoneC.innerHTML = "Invalid phone number";
+                event.preventDefault();
+                return;
+            } else {
+                phoneC.innerHTML = "";
+            }
+
+            let username = document.getElementById("username").value;
+            let usernameC = document.getElementById("usernameC")
+            let usernameRegex = /^[\w]{2,}$/;
+            if (!username.match(usernameRegex)) {
+                usernameC.innerHTML = "Invalid username";
+                event.preventDefault();
+                return;
+            } else {
+                usernameC.innerHTML = "";
+            }
+            let firstName = document.getElementById("firstName").value;
+            let firstNameC = document.getElementById("firstnameC")
+            if (firstName.length < 2) {
+                firstNameC.innerHTML = "Invalid first name";
+                event.preventDefault();
+                return;
+            } else {
+                firstNameC.innerHTML = "";
+            }
+            let difficulty = document.querySelector("input[name=\"difficulty\"]:checked");
+            if (difficulty == null) {
+                document.getElementById("difficultyC").innerHTML = "Please select a difficulty";
+                event.preventDefault();
+                return;
+            } else {
+                document.getElementById("difficultyC").innerHTML = "";
+            }
+
+
+
         }
+
+        function updatePreview() {
+            var value = document.getElementById("pfp").value;
+            var img = document.getElementById("img");
+            img.src = "Imgs/pfp/" + value + ".jpg";
+            img.alt = value;
+        }
+        setTimeout(updatePreview, 100)
 
     </script>
 
     <h1>Sign Up</h1>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr 0.5fr; width: 500px; margin: auto">
+    <div style="display: grid; grid-template-columns: 1fr 1fr 0.5fr; width: 500px; margin: auto; align-items:center">
         <label for="username">User name *</label>
         <input type="text" name="username" id="username" placeholder="user name" >
         <p id="usernameC" class="C"></p>
@@ -67,12 +127,27 @@
         <div></div>
         <label for="Easy">Easy</label>
         <input type="radio" name="difficulty" id="Easy" value="Easy" />
-        <div></div>
+        <p id="difficultyC"></p>
         <label for="Medium">Medium</label>
         <input type="radio" name="difficulty" id="Medium" value="Medium" />
         <div></div>
         <label for="Hard">Hard</label>
         <input type="radio" name="difficulty" id="Hard" value="Hard" />
+
+
+
+        <label for="pfp">Profile Picture</label>
+        <select id="pfp" name = "pfp" onchange = "updatePreview()">
+            <option value="dog" >dog</option>
+            <option value="cat">cat</option>
+            <option value="fish">fish</option>
+            <option value="bird">bird</option>
+            <option value="lizard">lizard</option>
+        </select>
+        <img id="img" src="" alt="Alternate Text" style="height: 100px"/>
+
+
+
     </div>
     <button type="submit" name="submit" id="submit" onclick="validatePassword(event)">Sign Up</button>
     <h3><%=message %></h3>

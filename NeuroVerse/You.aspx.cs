@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,7 +16,11 @@ namespace NeuroVerse
         public string firstName = "";
         public string lastName = "";
         public string phone = "";
-        public string password = "";
+
+
+        public string Easy = "";
+        public string Medium = "";
+        public string Hard = "";
 
 
         public string dog = "";
@@ -23,7 +28,7 @@ namespace NeuroVerse
         public string fish = "";
         public string bird = "";
         public string lizard = "";
-
+        public string light = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -41,36 +46,65 @@ namespace NeuroVerse
             firstName = thisguy.Rows[0]["Firstname"].ToString();
             lastName = thisguy.Rows[0]["Lastname"].ToString();
             phone = thisguy.Rows[0]["Phone"].ToString();
-            password = thisguy.Rows[0]["Password"].ToString();
+            light =  thisguy.Rows[0]["lightMode"].ToString() == "1" ? "checked" : "";
             string pfp = thisguy.Rows[0]["profilePic"].ToString();
+            string difficulty = thisguy.Rows[0]["Difficulty"].ToString();
+            
+            switch (difficulty)
+            {
+                case "Easy":
+                    Easy = "checked";
+                    break;
+                case "Medium":
+                    Medium = "checked";
+                    break;
+                case "Hard":
+                    Hard = "checked";
+                    break;
+            }
+            Response.Write("aaaq");
+            Response.Write(pfp);
+            switch (pfp)
+            {
+                case "dog":
+                    dog = "selected";
+                    break;
+                case "cat":
+                    Response.Write("cat");
+                    cat = "selected";
+                    break;
+                case "fish":
+                    fish = "selected";
+                    break;
+                case "bird":
+                    bird = "selected";
+                    break;
+                case "lizard":
+                    lizard = "selected";
+                    break;
+            }
 
-            if (pfp == "dog") dog = "selected";
-            if (pfp == "cat") cat = "selected";
-            if (pfp == "fish") fish = "selected";
-            if (pfp == "bird") bird = "selected";
-            if (pfp == "lizard") lizard = "selected";
-
-
-            Response.Write("a");
+            
             if (Request.Form["submit"] != null)
             {
-                Response.Write("g");
+
 
                 string newUsername = (string)Session["Username"];
-                string newPassword = Request.Form["password"];
+                string newPassword = thisguy.Rows[0]["Password"].ToString();
                 string newEmail = Request.Form["email"];
                 string newFirstName = Request.Form["firstName"];
                 string newLastName = Request.Form["lastName"];
                 string newPhone = Request.Form["phone"];
+                string newPfp = Request.Form["pfp"];
                 Response.Write(Request.Form["lightMode"]);
                 bool lightMode = Request.Form["lightMode"] == "on";
                 int lightModeValue = lightMode ? 1 : 0;
                 Session["light"] = lightModeValue;
-                string difficulty = Request.Form["difficulty"];
+                string newDifficulty = Request.Form["difficulty"];
 
 
 
-                string sqladd = $"UPDATE Users SET Username='{newUsername}', Password='{newPassword}', Email='{newEmail}', Firstname=N'{newFirstName}', Lastname=N'{newLastName}', Phone='{newPhone}',lightMode={lightModeValue},Difficulty = '{difficulty}' WHERE Username='{Session["Username"]}'";
+                string sqladd = $"UPDATE Users SET Username='{newUsername}', Password='{newPassword}', Email='{newEmail}', Firstname=N'{newFirstName}', Lastname=N'{newLastName}', Phone='{newPhone}',lightMode={lightModeValue},Difficulty = '{newDifficulty}',profilePic = '{newPfp}' WHERE Username='{Session["Username"]}'";
                 Helper.DoQuery("USERS.mdf", sqladd);
                 Session["Username"] = newUsername;
                 Response.Redirect("You.aspx");

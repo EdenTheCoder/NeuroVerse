@@ -24,6 +24,7 @@ namespace NeuroVerse
                 int lightModeValue = lightMode ? 1 : 0;
                 string difficulty = Request.Form["difficulty"];
                 string pfp = Request.Form["pfp"];
+
                 string sqlcheck = $"SELECT * FROM Users WHERE Username = '{username}'";
 
                 if (Helper.IsExist("USERS.mdf",sqlcheck))
@@ -32,7 +33,7 @@ namespace NeuroVerse
 
                 } else
                 {
-                    string sqladd = $"INSERT INTO Users (Username, Password, Email, Firstname, Lastname, Phone,Solved,lightMode,Difficulty,profilePic) " +
+                    string sqladd = $"INSERT INTO Users (Username, Password, Email, Firstname, Lastname, Phone,Solved,lightMode,Difficulty, profilePic) " +
                            $"VALUES ('{username}', '{password}', '{email}', N'{firstName}', N'{lastName}', '{phone}',1,{lightModeValue},'{difficulty}','{pfp}')";
                     Helper.DoQuery("USERS.mdf", sqladd);
                     Response.Redirect("Signin.aspx");
