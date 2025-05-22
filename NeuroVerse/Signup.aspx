@@ -133,7 +133,7 @@
         <div></div>
         <label for="Hard">Hard</label>
         <input type="radio" name="difficulty" id="Hard" value="Hard" />
-
+        <div></div>
 
 
         <label for="pfp">Profile Picture</label>

@@ -62,15 +62,12 @@ namespace NeuroVerse
                     Hard = "checked";
                     break;
             }
-            Response.Write("aaaq");
-            Response.Write(pfp);
             switch (pfp)
             {
                 case "dog":
                     dog = "selected";
                     break;
                 case "cat":
-                    Response.Write("cat");
                     cat = "selected";
                     break;
                 case "fish":
