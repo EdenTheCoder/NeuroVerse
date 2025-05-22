@@ -17,7 +17,7 @@
         gap: 0px;
         grid-template-rows: 100px 1fr 50px;
         grid-template-areas: 
-            "logo . . . discover create you . . . . user"
+            "logo . . . discover create you . greet greet . user"
             "body body body body body body body body body body body body";
             "fotter fotter fotter fotter fotter fotter fotter fotter fotter fotter fotter fotter";
         align-items: center;
@@ -47,6 +47,7 @@
             <a href="Discover.aspx" class="button" style="grid-area: discover;">Discover</a>
             <a href="Create.aspx" class="button" style="grid-area: create;" <%=hide %>>Create</a>
             <a href="You.aspx" class="button" style="grid-area: you;" <%=hide %>>You</a>
+            <h2 style="grid-area: greet">Hello <%= Session["Username"] %></h2>
             <a href="<%=loginUrl %>" class="button" style="grid-area: user;"><%=login %></a>
             
             <div style="grid-area: body; text-align:center">
