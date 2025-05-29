@@ -63,6 +63,8 @@
             <a href="adminlogin.aspx">Adminlogin</a>
             <p>we are currently running a fight light mode vs dark mode click here to open the fight tab</p>
             <a href="poll.aspx">fight</a>
+            <p>See my schdule</p>
+            <a href="Schedule.aspx">here</a>
         </div>
     </form>
 </body>
