@@ -11,6 +11,10 @@ namespace NeuroVerse
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!(bool)Session["Admin"])
+            {
+                Response.Redirect("discover.aspx");
+            }
             string user = Request.QueryString["user"];
             string sql = $"delete from Users where Username = '{user}'";
             Helper.DoQuery("USERS.mdf", sql);
